@@ -1,16 +1,23 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">Potterheads Blog</a>
+      <a class="navbar-brand" href="/">Welcome to Hogwarts</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li><%= link_to "Articles", articles_path %></li>
-      <li><%= link_to "Create Article", new_article_path %></li>
-    </ul>
-	<ul class="nav navbar-nav navbar-right">
+	<% if session[:user_id]==nil %>
+	  <ul class="nav navbar-nav navbar-right">
       <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-	  <li><%= link_to "Log out", logout_path, method: :delete %></li>
+	  </ul>
+	<%else%>
+	  <ul class="nav navbar-nav">
+      <li><%= link_to "Articles", articles_path %></li>
+      <li><%= link_to "Create Article", new_article_path %></li>
+      <li><%= link_to "Users", users_path %></li>
+      </ul>
+	  <ul class="nav navbar-nav navbar-right">
+	  <li><%= link_to "LOGOUT", logout_path, method: :delete %></li>
+	  </ul>
+	<%end%>
     </ul>
 	
   </div>

@@ -40,7 +40,7 @@ gem 'sassc-rails', '>= 2.1.0'
 
 gem 'jquery-rails'
 
-gem 'will_paginate', '3.1.5'
+gem 'will_paginate', '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
 
 group :development, :test do

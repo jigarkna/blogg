@@ -3,8 +3,10 @@ class ArticlesController < ApplicationController
 def new
   @article = Article.new
 end
+
 def create
   @article = Article.new(article_params)
+  @article.user_id=session[:user_id]
   if @article.save
    flash[:notice] = "Article was successfully created"
    redirect_to article_path(@article)
@@ -12,6 +14,7 @@ def create
    render 'new'
   end
 end
+
 def show
 end
 def update
@@ -26,7 +29,7 @@ end
 def edit
 end
 def index
-  @articles = Article.all
+  @articles = Article.paginate(page: params[:page], per_page: 5)
 end
 def destroy
   @article.destroy
